@@ -1,0 +1,16 @@
+# One Node web service serves both the built website and /api routes.
+services:
+  - type: web
+    name: skinwise
+    runtime: node
+    plan: free
+    repo: https://github.com/helbinjoshy1/deo-
+    branch: main
+    buildCommand: npm ci --include=dev && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: "24.19.0"
+      - key: NODE_ENV
+        value: production
